@@ -20,12 +20,12 @@ $location = callFeed("location.feed", $locationParameters);
 		<script src="js/jquery.ajaxify.js" type="text/javascript"></script>
 		<script src="js/jquery.cookie.js" type="text/javascript"></script>
 		<script src="js/global.js" type="text/javascript"></script>
-		<script text="text/javascript">
+		<script type="text/javascript">
 		$(document).ready(function() {
 			$('.ajaxify').ajaxify();
 		});
 		</script>
-		<link rel="StyleSheet" href="css/screen.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen"></link>
 	</head>
 	<body>
 		<div id="page">

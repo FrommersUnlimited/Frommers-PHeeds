@@ -128,8 +128,8 @@ if (count($headerImages) >= 5) {
 		<script src="js/jquery.tools.min.js" type="text/javascript"></script>
 		<script src="js/global.js" type="text/javascript"></script>
 		<script src="js/location-detail.js" type="text/javascript"></script>
-		<link rel="StyleSheet" href="css/screen.css" type="text/css" media="screen">
-		<link rel="StyleSheet" href="css/location-scroll.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen"></link>
+		<link rel="stylesheet" href="css/location-scroll.css" type="text/css" media="screen"></link>
 	</head>
 	<body>
 		<div id="page">
@@ -169,7 +169,7 @@ if (count($headerImages) >= 5) {
 		
 						<?php  if ($showImageBand && (count($rand_images) > 4)) { ?>
 							<div class="feedContent">
-								<div class="feedName"><a href="#feed_event_search" class="feedViewAction">event_search.feed</a> & <a href="#feed_poi_search" class="feedViewAction">poi_search.feed</a></div>
+								<div class="feedName"><a href="#feed_event_search" class="feedViewAction">event_search.feed</a> &amp; <a href="#feed_poi_search" class="feedViewAction">poi_search.feed</a></div>
 								<div class="thumbs">
 									<?php foreach($rand_images as $i) { ?>
 										<?php $image = $headerImages[$i]; ?>

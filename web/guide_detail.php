@@ -33,7 +33,7 @@ $destinationMenu = callFeed("destination_menu.feed", $destinationMenuParameters)
 		<script src="js/jquery-1.4.2.min.js" type="text/javascript"></script>
 		<script src="js/jquery.cookie.js" type="text/javascript"></script>
 		<script src="js/global.js" type="text/javascript"></script>
-		<link rel="StyleSheet" href="css/screen.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen"></link>
 	</head>
 	<body>
 		<div id="page">
