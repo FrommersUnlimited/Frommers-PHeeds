@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<slider>
+	<overview>
+		<![CDATA[
+			<h3>Item Of Interest Detail Page</h3>
+	        <p>This page pulls in data from multiple feeds, and gives an overview of a destination.</p>
+		]]>
+	</overview>
+	<quickLinks>
+		<link url="index.php" name="Sample Home Page" />
+        <link url="guide_detail.php?guideStructureId=252780" name="Guide Detail Page" />
+        <link url="item_of_interest_list.php?type=EVENT&amp;locationId=143092" name="Event List Page" />
+        <link url="item_of_interest_detail.php?itemOfInterestId=470243" name="Item Of Interest Detail Page" />
+	</quickLinks>
+	<feeds>
+		<feed id="item_of_interest" name="item_of_interest.feed">
+			<overview>
+				<![CDATA[
+	       			<h3>Item Of Interest Feed</h3>
+	       			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	       			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
+		        ]]>
+			</overview>
+			<apiLink url="#" name="View location_search API" />
+			<exampleLinks>
+				<link url="#" name="Desination Menu Example" />
+		        <link url="#" name="Top Hotels Example" />
+		        <link url="#" name="Item Of Interest Example" />
+			</exampleLinks>
+		</feed>
+		<feed id="destination_menu" name="destination_menu.feed">
+			<overview>
+				<![CDATA[
+	       			<h3>Destination Menu Feed</h3>
+	       			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	       			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		        ]]>
+			</overview>
+			<apiLink url="#" name="View location_search API" />
+			<exampleLinks>
+				<link url="#" name="Desination Menu Example" />
+		        <link url="#" name="Top Hotels Example" />
+		        <link url="#" name="Item Of Interest Example" />
+			</exampleLinks>
+		</feed>
+	</feeds>
+</slider>

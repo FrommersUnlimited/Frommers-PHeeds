@@ -1,0 +1,624 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	margin: 0;
+	background-color: #ffa815;
+	font-family: arial;
+	font-size: 12px;
+	line-height: 20px;
+	color
+	#000000;
+}
+
+#page {
+	background-color: #ffffff;
+	width: 930px;
+	margin: 50px auto;
+	border: 1px solid #ee4f00;
+}
+
+#pageInner {
+	
+}
+
+#slider {
+	position: fixed;
+	top: 0px;
+	width: 943px;
+	z-index: 1010;
+}
+
+#slider p {
+	margin-top: 0px;
+}
+
+#slider .hoverFix {
+	position: absolute;
+	bottom: 10px;
+	left: 5px;
+	width: 920px;
+	height: 1000px;
+	background-color: #c41230;
+	z-index: -1000;
+}
+
+#slider a.external {
+	color: #666666 !important;
+}
+
+#sliderPrimaryContent {
+	background: url('images/slider-background.png') repeat-y top left;
+	position: relative;
+	left: -1px;
+	height: 0px;
+	overflow: hidden;
+	text-align: left;
+	width: 943px;
+	z-index: 100;
+}
+
+#slider #sliderPrimaryContent .feedInfo a.closed {
+	padding-right: 20px;
+	background: url('images/toggle-arrow-right.png') no-repeat center right;
+}
+
+#slider #sliderPrimaryContent .feedInfo a.open {
+	padding-right: 20px;
+	background: url('images/toggle-arrow-down.png') no-repeat center right;
+}
+
+#sliderSecondaryContent {
+	z-index: 100;
+	display: none;
+	background: url('images/slider-background.png') repeat-y top left;
+	position: relative;
+	left: -1px;
+}
+
+#sliderSecondaryContentInner {
+	position: relative;
+	display: none;
+	zoom: 1;
+}
+
+#slider #sliderPrimaryContent .inner {
+	margin: 15px 50px 0 50px;
+}
+
+#slider #sliderPrimaryContent .overview {
+	width: 275px;
+	margin-right: 50px;
+	float: left;
+}
+
+#slider .feedInfo {
+	width: 250px;
+	margin-right: 15px;
+	float: left;
+}
+
+#slider .pageList {
+	width: 250px;
+	float: left;
+}
+
+#slider #sliderSecondaryContentInner {
+	margin: 0px 50px 0 50px;
+	border-top: 1px solid #c41230;
+	position: relative;
+}
+
+#slider #sliderSecondaryContentInner .feedDetailCloseAction {
+	float: right;
+	padding-right: 20px;
+	background: url('images/toggle-arrow-down.png') no-repeat center right;
+}
+
+#slider #sliderSecondaryContentInner .feedDetailCloseAction .feedDetail
+	{
+	margin: 20px 0 0 0;
+}
+
+#slider h2 {
+	color: #c41230;
+	font-size: 16px;
+	background: none;
+	margin-top: -20px;
+	padding: 0;
+}
+
+#slider h3 {
+	color: #c41230;
+	font-size: 14px;
+	background: none;
+}
+
+#slider ul li {
+	color: #c41230;
+}
+
+#slider #sliderPrimaryContent a,#slider #sliderSecondaryContent a {
+	color: #c41230;
+}
+
+#slider #sliderSecondaryContentInner .overview {
+	margin: 30px 40px 30px 0;
+	width: 550px;
+	float: left;
+}
+
+#slider #sliderSecondaryContentInner .additionalInfo {
+	margin-top: 40px;
+	width: 200px;
+	float: left;
+}
+
+#slider #sliderSecondaryContentInner .additionalInfo h3 {
+	margin-top: 20px;
+}
+
+#sliderBar {
+	width: 943px;
+	height: 47px;
+	text-align: center;
+	background: url('images/slider-handle.png') no-repeat top left;
+	position: relative;
+	left: -1px;
+}
+
+#sliderBar a {
+	display: block;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 38px;
+	color: #ffffff;
+}
+
+#slider #sliderBar a span {
+	background: url('images/slider-close-arrows.png') no-repeat center;
+	padding: 0px 120px;
+}
+
+#slider #sliderBar a:hover {
+	text-decoration: none;
+}
+
+#slider.closed #sliderBar a span {
+	background: url('images/slider-open-arrows.png') no-repeat center;
+	padding: 0px 120px;
+}
+
+* html #slider { /* these styles are only picked up by IE6 */
+	position: absolute;
+}
+
+* html #sliderBar { /* these styles are only picked up by IE6 */
+	background: url('images/slider-handle.gif') no-repeat top left;
+}
+
+* html #sliderPrimaryContent {
+	/* these styles are only picked up by IE6 */
+	background: url('images/slider-background.gif') repeat-y top left;
+}
+
+* html #sliderSecondaryContent {
+	/* these styles are only picked up by IE6 */
+	background: url('images/slider-background.gif') repeat-y top left;
+}
+
+#page #header {
+	position: relative;
+	height: 100px;
+	background: url('images/header.png') no-repeat;
+}
+
+#page #header a {
+	display: block;
+	height: 87px;
+	width: 208px;
+	position: absolute;
+	top: 9px;
+	left: 30px;
+	text-indent: -999px;
+	background: url('images/logo.png') no-repeat;
+}
+
+#page #content {
+	padding: 40px;
+}
+
+#page #content .detailBox {
+	margin: 7px 0 24px 0;
+}
+
+#page #content .detailBox img {
+	float: left;
+	margin: 0px 10px 0 0;
+	border: none;
+}
+
+#page .details {
+	line-height: 16px;
+}
+
+img {
+	border: 0px;
+}
+
+h1 {
+	line-height: 29px;
+	font-size: 29px;
+	color: #ef5400;
+	margin: 8px 0;
+}
+
+h2 {
+	line-height: 29px;
+	font-size: 29px;
+	background-color: #ef5400;
+	color: #ef5400;
+	padding: 0 0 0 12px;
+	margin: 0 0 4px 0;
+}
+
+h2 span {
+	background-color: #ffffff;
+	padding: 0px 7px;
+}
+
+h3 {
+	color: #ef5400;
+	font-size: 14px;
+	padding: 0px;
+	margin: 0px;
+}
+
+p {
+	margin: 6px 0 12px 0;
+	line-height: 20px;
+}
+
+ul.simple {
+	list-style: disc;
+	margin: 0px;
+	padding: 0 0 0 15px;
+}
+
+ul li {
+	margin: 0px;
+	padding: 0px;
+	color: inherit;
+}
+
+ul.detailList {
+	list-style: none;
+	padding: 0 0 15px 0;
+	margin: 0 0 0px 0;
+	line-height: 14px;
+	border-bottom: 1px solid #ccc;
+	width: 230px;
+}
+
+ul.detailList li {
+	margin: 0 0 5px 0;
+}
+
+a {
+	text-decoration: none;
+	color: #ef5400;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* new clearfix */
+div#content:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+* html div#content {
+	zoom: 1;
+}  /* IE6 */
+*:first-child+html div#content {
+	zoom: 1;
+}  /* IE7 */
+#home #content .primaryContent {
+	float: left;
+	width: 444px;
+}
+
+#home #content .secondaryContent {
+	float: right;
+	width: 370px;
+}
+
+#home #content .secondaryContent .tidbit {
+	float: left;
+	width: 120px;
+}
+
+#content #breadcrumb {
+	position: absolute;
+	top: -30px;
+}
+
+#content #breadcrumb ul {
+	padding: 0 0 0 0;
+	display: inline;
+}
+
+#content .primaryContent #breadcrumb ul li {
+	padding: 0 5px 0 13px;
+	background: url('images/li-orange-arrow.png') no-repeat center left;
+	display: inline;
+}
+
+#content #destinationMenu {
+	float: left;
+	width: 150px;
+}
+
+#content #destinationMenu ul {
+	margin: 0;
+	padding: 0 0 0 0px;
+	list-style: none;
+	line-height: 20px;
+}
+
+#content #destinationMenu ul li ul {
+	list-style: none;
+	margin: 8px 0 0 0;
+	padding: 0 0 0 18px;
+}
+
+#content #destinationMenu ul li ul li {
+	margin: 0 0 5px 0;
+	line-height: 14px;
+	list-style: disc;
+	color: #ef5400;
+}
+
+#content .primaryContent {
+	float: right;
+	width: 650px;
+	position: relative;
+}
+
+#content .primaryContent .rawHTMLOutput li {
+	margin-top: 20px;
+	margin-left: 40px;
+}
+
+#content .primaryContent .highlightBox {
+	margin: 0px 30px 20px 30px;
+}
+
+#content .primaryContent .thumbs {
+	margin: 4px 0px 10px 0;
+	text-align: center;
+}
+
+#content .primaryContent .thumbs a {
+	margin: 0 9px;
+}
+
+#content .primaryContent .thumbs a img {
+	margin: 0;
+	padding: 0;
+}
+
+#content table.sortTable {
+	border-collapse: collapse;
+	margin-top: 20px;
+	width: 100%;
+}
+
+#content table.sortTable img {
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+#content table.sortTable tr {
+	border-bottom: 1px solid #f69931;
+}
+
+#content table.sortTable th,#content table.sortTable td {
+	padding: 2px 5px;
+	line-height: 14px;
+}
+
+#content table.sortTable th {
+	border-right: 3px solid #ffffff;
+	background-color: #f69931;
+	color: #ffffff;
+	font-weight: normal;
+}
+
+#content table.sortTable th.eventColumn {
+	width: 350px;
+}
+
+#content table.sortTable th a {
+	font-weight: bold;
+	color: #ffffff;
+	padding-right: 14px;
+}
+
+#content table.sortTable th a {
+	background: url('images/sort-arrow.png') no-repeat center right;
+}
+
+#content table.sortTable th.asc a {
+	background: url('images/sort-arrow-asc.png') no-repeat center right;
+}
+
+#content table.sortTable th.desc a {
+	background: url('images/sort-arrow-desc.png') no-repeat center right;
+}
+
+#content .pagination {
+	margin: 20px 0 0 0;
+}
+
+#content .pagination .controls a {
+	float: left;
+	padding: 10px;
+}
+
+#content .pagination .controls .forward {
+	float: right;
+}
+
+.rank1 {
+	overflow: hidden;
+	text-indent: -999px;
+	width: 13px;
+	background: url('images/rank-star.png') repeat-x center right;
+}
+
+.rank2 {
+	overflow: hidden;
+	text-indent: -999px;
+	width: 26px;
+	background: url('images/rank-star.png') repeat-x center right;
+}
+
+.rank3 {
+	overflow: hidden;
+	text-indent: -999px;
+	width: 39px;
+	background: url('images/rank-star.png') repeat-x center right;
+}
+
+.rank4 {
+	overflow: hidden;
+	text-indent: -999px;
+	width: 52px;
+	background: url('images/rank-star.png') repeat-x center right;
+}
+
+.price1 {
+	overflow: hidden;
+	text-indent: -999px;
+	width: 10px;
+	background: url('images/price-sign.png') repeat-x center right;
+}
+
+.price2 {
+	overflow: hidden;
+	text-indent: -999px;
+	width: 20px;
+	background: url('images/price-sign.png') repeat-x center right;
+}
+
+.price3 {
+	overflow: hidden;
+	text-indent: -999px;
+	width: 30px;
+	background: url('images/price-sign.png') repeat-x center right;
+}
+
+.price4 {
+	overflow: hidden;
+	text-indent: -999px;
+	width: 40px;
+	background: url('images/price-sign.png') repeat-x center right;
+}
+
+#featuredEventsOverview.TOWN {
+	float: left;
+	width: 400px;
+}
+
+.feedContent {
+	zoom: 1;
+	position: relative;
+	margin: -5px -10px;
+	padding: 5px 10px;
+}
+
+.feedContentHover {
+	position: relative;
+	background-color: #ffffff;
+	border: 3px solid #CC0033;
+	margin: -8px -13px;
+	z-index: 1000;
+}
+
+.feedContent .feedName {
+	display: none;
+	position: absolute;
+	top: -30px;
+	left: -3px;
+	line-height: 22px;
+	background-color: #cc0033;
+	color: #ffffff;
+	font-size: 12px;
+	padding: 0 10px;
+	border: 3px solid #CC0033;
+}
+
+.feedContentHover .feedName {
+	display: block;
+}
+
+.feedContentHover .feedName .feedViewAction {
+	color: #ffffff;
+}
+
+.address {
+	margin: 2px 0 20px 0;
+}
+
+.detailGroup {
+	margin-bottom: 10px;
+}
+
+.infoTable {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.infoTable tr {
+	border-bottom: 1px solid #ccc;
+}
+
+.infoTable th {
+	width: 25%;
+	background-color: #f6f6f6;
+	xborder-bottom: 1x solid #ccc;
+}
+
+.infoTable td {
+	width: 75%;
+	xborder-bottom: 1px solid #ccc;
+}
+
+.infoTable th,.infoTable td {
+	text-align: left;
+	vertical-align: top;
+	padding: 3px 5px 3px 5px;
+}
+
+/* new clearfix */
+div.feedContent:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+* html div.feedContent {
+	zoom: 1;
+}  /* IE6 */
+*:first-child+html div.feedContent {
+	zoom: 1;
+} /* IE7 */
