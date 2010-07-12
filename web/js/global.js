@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	
 	var SLIDER_STATE_COOKIE_NAME = 'test_cookie';
     var cookie_options = { path: '/', expires: 10 };
     
@@ -53,6 +54,7 @@ $(document).ready(function() {
 	    	return false;
         }
     });
+    
     $(".feedViewAction").click( function() {
     	if ($("#slider").hasClass("closed")) {
         	$("#sliderPrimaryContent").animate({ 

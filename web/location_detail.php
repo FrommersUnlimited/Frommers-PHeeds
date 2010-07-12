@@ -1,5 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
-
 <?php
 
 include('includes/feed.inc.php');
@@ -14,6 +12,11 @@ $destinationMenuParameters["locationId"] = $locationId;
 $destinationMenuParameters["autoHide"] = "true";
 $destinationMenu = callFeed("destination_menu.feed", $destinationMenuParameters);
 
+if (!$destinationMenu) {
+	include "error.php"; 
+	exit();
+}
+
 $snippet = null;
 $introductionGuideStructureId = $destinationMenu->xpath('//destinationLink[@name="Introduction"]/@url'); 
 if ($introductionGuideStructureId) {
@@ -23,13 +26,19 @@ if ($introductionGuideStructureId) {
 	$snippet = htmlspecialchars_decode($snippet->content);
 	$start = strpos($snippet, '<p>');
 	$end = strpos($snippet, '</p>', $start);
-	$snippet = substr($snippet, $snippet, $end-$start+4);
+	$snippet = substr($snippet, 0, $end-$start+4);
 }
 
  
 $locationParameters = array();
 $locationParameters["locationId"] = $locationId;
 $location = callFeed("location.feed", $locationParameters);
+
+if (!$location) {
+	include "error.php"; 
+	exit();
+}
+
 $type = $location["type"];
 
 $childRegionLocations = null;
@@ -40,10 +49,20 @@ if ($type =="COUNTRY") {
 	$childRegionLocationsParameters["showMax"] = "true";
 	$childRegionLocations = callFeed("location_search.feed", $childRegionLocationsParameters);
 	
+	if (!$childRegionLocations) {
+		include "error.php"; 
+		exit();
+	}
+	
 	$childStateLocationsParameters["parentId"] = $locationId;
 	$childStateLocationsParameters["type"] = "STATE";
 	$childStateLocationsParameters["showMax"] = "true";
 	$childStateLocations = callFeed("location_search.feed", $childStateLocationsParameters);
+
+	if (!$childStateLocations) {
+		include "error.php"; 
+		exit();
+	}
 }
 $childTownLocations = null;
 if ($type =="REGION" || $type == "STATE" || $type == "COUNTRY") {	
@@ -51,6 +70,11 @@ if ($type =="REGION" || $type == "STATE" || $type == "COUNTRY") {
 	$childTownLocationsParameters["type"] = "TOWN";
 	$childTownLocationsParameters["showMax"] = "true";
 	$childTownLocations = callFeed("location_search.feed", $childTownLocationsParameters);
+	
+	if (!$childTownLocations) {
+		include "error.php"; 
+		exit();
+	}
 }
 
 $eventParameters = array();
@@ -62,6 +86,10 @@ if ($type !="TOWN") {
 
 $event = callFeed("event_search.feed", $eventParameters);
 
+if (!$event) {
+	include "error.php"; 
+	exit();
+}
 $numberOfEvents = 3;
 if ($type =="TOWN") {
 	$numberOfEvents = 5;	
@@ -79,6 +107,11 @@ if ($type =="TOWN" ) {
 	$topRestaurantParameters["type"] = "RESTAURANT";
 	$topRestaurantParameters["sort"] = "rank";
 	$topRestaurant = callFeed("poi_search.feed", $topRestaurantParameters);
+
+	if (!$topRestaurant) {
+		include "error.php"; 
+		exit();
+	}
 	
 	$topAttractionParameters = array();
 	$topAttractionParameters["nPerPage"] = "3";
@@ -87,12 +120,22 @@ if ($type =="TOWN" ) {
 	$topRestaurantParameters["sort"] = "rank";
 	$topAttraction = callFeed("poi_search.feed", $topAttractionParameters);
 	
+	if (!$topAttraction) {
+		include "error.php"; 
+		exit();
+	}
+	
 	$topNightlifeParameters = array();
 	$topNightlifeParameters["nPerPage"] = "3";
 	$topNightlifeParameters["locationId"] = $locationId;
 	$topNightlifeParameters["type"] = "NIGHTLIFE";
 	$topNightlifeParameters["sort"] = "rank";
 	$topNightlife = callFeed("poi_search.feed", $topNightlifeParameters);
+	
+	if (!$topNightlife) {
+		include "error.php"; 
+		exit();
+	}
 	
 	$topShoppingParameters = array();
 	$topShoppingParameters["nPerPage"] = "3";
@@ -101,12 +144,22 @@ if ($type =="TOWN" ) {
 	$topShoppingParameters["sort"] = "rank";
 	$topShopping = callFeed("poi_search.feed", $topShoppingParameters);
 	
+	if (!$topShopping) {
+		include "error.php"; 
+		exit();
+	}
+	
 	$topHotelParameters = array();
 	$topHotelParameters["nPerPage"] = "3";
 	$topHotelParameters["locationId"] = $locationId;
 	$topHotelParameters["type"] = "HOTEL";
 	$topHotelParameters["sort"] = "rank";
 	$topHotel = callFeed("poi_search.feed", $topHotelParameters);
+
+	if (!$topHotel) {
+		include "error.php"; 
+		exit();
+	}
 }
 
 $eventImages = findImages($locationId, 8, "EVENT");
@@ -118,11 +171,10 @@ if (count($headerImages) >= 5) {
 	$rand_images = array_rand($headerImages, 5);
 }
 
-?>
-
-
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<script src="js/jquery-1.4.2.min.js" type="text/javascript"></script>
 		<script src="js/jquery.cookie.js" type="text/javascript"></script>
 		<script src="js/jquery.tools.min.js" type="text/javascript"></script>

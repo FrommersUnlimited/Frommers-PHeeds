@@ -1,5 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
-
 <?php
 
 include('includes/feed.inc.php');
@@ -12,11 +10,22 @@ $guideStructureParameters = array();
 $guideStructureParameters["guideStructureId"] = $guideStructureId;
 $guideStructure = callFeed("guide_structure.feed", $guideStructureParameters);
 
+if (!$guideStructure) {
+	include "error.php"; 
+	exit();
+}
+
 $locationId = $guideStructure->guide->location["id"];
 
 $locationParameters = array();
 $locationParameters["locationId"] = $locationId;
 $location = callFeed("location.feed", $locationParameters);
+
+if (!$location) {
+	include "error.php"; 
+	exit();
+}
+
 $type = $location["type"];
 
 $destinationMenuParameters = array();
@@ -24,12 +33,17 @@ $destinationMenuParameters["guideStructureId"] = $guideStructureId;
 $destinationMenuParameters["autoHide"] = "true";
 $destinationMenu = callFeed("destination_menu.feed", $destinationMenuParameters);
 
+if (!$destinationMenu) {
+	include "error.php"; 
+	exit();
+}
 
-?>
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<script src="js/jquery-1.4.2.min.js" type="text/javascript"></script>
 		<script src="js/jquery.cookie.js" type="text/javascript"></script>
 		<script src="js/global.js" type="text/javascript"></script>

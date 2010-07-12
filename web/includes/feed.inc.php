@@ -2,8 +2,6 @@
 define("BASE_MEDIA_URL", "http://media.wiley.com");
 include('cache.inc.php');
 
-
-
 function callFeed($feedName, $parameters, $ttl = 15) {
 	$debug = false;
 	$baseURL = "http://demosite.frommers.biz/frommers/" . $feedName;
@@ -17,51 +15,68 @@ function callFeed($feedName, $parameters, $ttl = 15) {
 		$baseURL = $baseURL . $key . "=" . $value;  
 	}
 	
-	if ($debug){ ?>
-		<!-- REQUEST: <?php echo $baseURL; ?> -->
-	<?php } 
+	if ($debug){ 
+		?><!-- REQUEST: <?php echo $baseURL; ?> --><?php
+	} 
 	
 	$key = md5($baseURL);
 	
 	if($ttl < 0 || (!$xml = cache_get($key))) {
-				
-		// is curl installed?
-	    if (!function_exists('curl_init')){ 
-	        die('CURL is not installed!');
-	    }
-	 
-	    // create a new curl resource
-	    $ch = curl_init();
-	 
-	    // set URL to download
-	    curl_setopt($ch, CURLOPT_URL, $baseURL);
-	 
-	    // remove header? 0 = yes, 1 = no
-	    curl_setopt($ch, CURLOPT_HEADER, 0);
-	 
-	    // should curl return or print the data? true = return, false = print
-	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	 
-	    // timeout in seconds
-	    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-	 
-	    // download the given URL, and return output
-	    $response = curl_exec($ch);
-	 
-	    // close the curl resource, and free system resources
-	    curl_close($ch);
-	 
-		if ($debug) {?>
-			<div style="display:none;">
+		try {
+			// is curl installed?
+		    if (!function_exists('curl_init')){ 
+		        die('CURL is not installed!');
+		    }
+		 
+		    // create a new curl resource
+		    $ch = curl_init();
+		 
+		    // set URL to download
+		    curl_setopt($ch, CURLOPT_URL, $baseURL);
+		 
+		    // remove header? 0 = yes, 1 = no
+		    curl_setopt($ch, CURLOPT_HEADER, 0);
+		 
+		    // should curl return or print the data? true = return, false = print
+		    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		 
+		    // timeout in seconds
+		    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+		 
+		    // download the given URL, and return output
+		    $response = curl_exec($ch);
+		 	
+		    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		    
+		    if ($httpCode != "200") {
+		    	return false;	
+		    }
+		    
+		    // close the curl resource, and free system resources
+		    curl_close($ch);
+
+		} catch (Exception $e)
+		{
+		    return false;
+		}
+		    
+		if ($debug) {
+			?><div style="display:none;">
 				<!-- RESPONSE: 
-				<?php //echo $response?>
+				<?php echo $response?>
 				-->
-			</div>
-		<?php } 
+			</div><?php 
+		} 
 	    
 	    // convert respone into simple xml element
-	   	$xml = new SimpleXMLElement($response);
-	    
+		try {
+		    $xml = new SimpleXMLElement($response);
+		}
+		catch (Exception $e)
+		{
+		    return false;
+		}
+		
 	   	if ($ttl > 0) {
 			cache_put($key, $xml, $ttl);
 	   	}

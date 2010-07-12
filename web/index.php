@@ -1,6 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
-
-
 <?php
 				
 include('includes/feed.inc.php');
@@ -10,6 +7,11 @@ $eventParameters["nPerPage"] = "5";
 $eventParameters["sort"] = "rank";
 $event = callFeed("event_search.feed", $eventParameters);
 
+if (!$event) {
+	include "error.php"; 
+	exit();
+}
+
 $input = array(0, 1, 2, 3, 4);
 $rand_keys = array_rand($input, 3);
 
@@ -17,11 +19,16 @@ $countryLocationsParameters = array();
 $countryLocationsParameters["type"] = "COUNTRY";
 $countryLocations = callFeed("location_search.feed", $countryLocationsParameters);
 
-?>
+if (!$countryLocations) {
+	include "error.php"; 
+	exit();
+}
 
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<script src="js/jquery-1.4.2.min.js" type="text/javascript"></script>
 		<script src="js/jquery.cookie.js" type="text/javascript"></script>
 		<script src="js/global.js" type="text/javascript"></script>
