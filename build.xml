@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<project name="FrommersUnlimited Demo Site" default="integration">
+
+	<property file="local.properties" />
+	<property file="default.properties" />
+
+	<target name="pack-site" description="Pack the site into a deployable zip file">
+		<mkdir dir="dist/archives" />
+		<!-- Build zip -->
+		<zip zipfile="dist/archives/demo-site.zip" whenempty="fail">
+			<zipfileset dir="web" />
+		</zip>
+	</target>
+
+	<target name="integration" depends="integration-delete,integration-upload,integration-unpack" description="Deploy to integration server (only runnable on integration server)" />
+
+	<target name="integration-delete" depends="pack-site" description="Deletes whatever is on the server before uploading and exploding the zip">
+		<sshexec host="${int.host}"
+                username="${int.user}"
+                password="${int.pass}"
+                command="rm -drf ${int.path}/*"/>
+	</target>
+
+	<target name="integration-upload" depends="integration-delete" description="Upload files to dev/integration servers">
+		<scp todir="${int.user}:${int.pass}@${int.host}:${int.dir.incoming}">
+			<fileset file="dist/archives/demo-site.zip"/>
+		</scp>
+	</target>
+
+	<target name="integration-unpack" depends="integration-upload" description="Unpack archives">
+		<sshexec host="${int.host}" username="${int.user}" password="${int.pass}" command="cd ${int.dir.incoming}; unzip -o demo-site.zip -d ${int.path}" trust="true" />
+	</target>
+
+</project>

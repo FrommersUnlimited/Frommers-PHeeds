@@ -140,7 +140,7 @@ $end = $start + intval($results["currentPageResultCount"]) - 1;
 							</ul>
 						</div>
 
-						<?php if ($type == "EVENT") { ?>
+                        <?php if ($type == "EVENT") { ?>
 							<h2><span>Events</span></h2>
 						<?php } else if ($type == "SHOPPING") { ?>
 							<h2><span>Shopping</span></h2>

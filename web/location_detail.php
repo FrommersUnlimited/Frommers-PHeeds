@@ -182,6 +182,7 @@ if (count($headerImages) >= 5) {
 		<script src="js/location-detail.js" type="text/javascript"></script>
 		<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen"></link>
 		<link rel="stylesheet" href="css/location-scroll.css" type="text/css" media="screen"></link>
+        <title><?php echo $location["name"];?></title>
 	</head>
 	<body>
 		<div id="page">

@@ -41,6 +41,7 @@ if (!$destinationMenu) {
 		<script src="js/jquery.cookie.js" type="text/javascript"></script>
 		<script src="js/global.js" type="text/javascript"></script>
 		<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen"></link>
+        <title><?php echo htmlspecialchars_decode($itemOfInterest["name"]);?></title>
 	</head>
 	<body>
 		<div id="page">

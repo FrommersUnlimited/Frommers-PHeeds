@@ -33,6 +33,7 @@ if (!$countryLocations) {
 		<script src="js/jquery.cookie.js" type="text/javascript"></script>
 		<script src="js/global.js" type="text/javascript"></script>
 		<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen"></link>
+        <title>Your Brand</title>
 	</head>
 	<body id="home">
 		<div id="page">
@@ -51,7 +52,7 @@ if (!$countryLocations) {
 						
 						<h1>Welcome to the Your Brand Destination Guide</h1>
 						
-						<p>Welcome to the Your Brand destination guide. Let us guide you through everything you need to ensure you have the perfect vacation. We can give detailed practical information to ensure your travel plans run as smoothly as possible. Check out our restaurant guides to find the best tables in town. Our attractions guides ensure you’ll know what not to miss and also what hidden gems you can uncover. Our nightlife guide will guide you towards the best places to kick-back at the end of the day, while our accommodation guide will help you discover the most comfortable places to stay. And, if you’re looking for some extra inspiration, our comprehensive events guide lets you know all about the festivals, concerts, exhibitions etc that will make it a trip to remember. Enjoy!</p>
+						<p>Welcome to the Your Brand destination guide. Let us guide you through everything you need to ensure you have the perfect vacation. We can give detailed practical information to ensure your travel plans run as smoothly as possible. Check out our restaurant guides to find the best tables in town. Our attractions guides ensure you'll know what not to miss and also what hidden gems you can uncover. Our nightlife guide will guide you towards the best places to kick-back at the end of the day, while our accommodation guide will help you discover the most comfortable places to stay. And, if you're looking for some extra inspiration, our comprehensive events guide lets you know all about the festivals, concerts, exhibitions etc that will make it a trip to remember. Enjoy!</p>
 					</div>
 					<div class="secondaryContent">
 						<h2><span>Featured Events</span></h2>
