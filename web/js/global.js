@@ -10,7 +10,7 @@ $(document).ready(function() {
                 marginTop: "0px"
                 }, 250 );
         	$("#sliderSecondaryContent").show();
-            $("#sliderHandle span").html('Click to Close');
+            $("#sliderHandle span").html('Click to close');
             $("#slider").removeClass("closed");
             $.cookie(SLIDER_STATE_COOKIE_NAME, 'open', cookie_options);
             return false;
@@ -20,7 +20,7 @@ $(document).ready(function() {
                 height: "0px",
 				marginTop: "0px"
                 }, 250 );
-            $("#sliderHandle span").html('Show All Feeds On This Page');
+            $("#sliderHandle span").html('Show all feeds on this page');
             $("#slider").addClass("closed");
             $.cookie(SLIDER_STATE_COOKIE_NAME, 'closed', cookie_options);
             return false;

@@ -3,45 +3,24 @@
 	<overview>
 		<![CDATA[
 			<h3>Item Of Interest Detail Page</h3>
-	        <p>This page pulls in data from multiple feeds, and gives an overview of a destination.</p>
+	        <p>This page displays the detail in the Item Of Interest feed.  The Item Of Interest can be an Event 
+            or a POI, such as an Attraction or Hotel.</p>
 		]]>
 	</overview>
-	<quickLinks>
-		<link url="index.php" name="Sample Home Page" />
-        <link url="guide_detail.php?guideStructureId=252780" name="Guide Detail Page" />
-        <link url="item_of_interest_list.php?type=EVENT&amp;locationId=143092" name="Event List Page" />
-        <link url="item_of_interest_detail.php?itemOfInterestId=470243" name="Item Of Interest Detail Page" />
-	</quickLinks>
 	<feeds>
-		<feed id="item_of_interest" name="item_of_interest.feed">
+		<feed code="item_of_interest" name="Item Of Interest" exampleLink="true">
 			<overview>
 				<![CDATA[
-	       			<h3>Item Of Interest Feed</h3>
-	       			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	       			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
+	       			<p>Calls the Item Of Interest feed by using the itemOfInterestId in the request.</p> 
 		        ]]>
 			</overview>
-			<apiLink url="#" name="View location_search API" />
-			<exampleLinks>
-				<link url="#" name="Desination Menu Example" />
-		        <link url="#" name="Top Hotels Example" />
-		        <link url="#" name="Item Of Interest Example" />
-			</exampleLinks>
 		</feed>
-		<feed id="destination_menu" name="destination_menu.feed">
-			<overview>
-				<![CDATA[
-	       			<h3>Destination Menu Feed</h3>
-	       			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	       			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		        ]]>
-			</overview>
-			<apiLink url="#" name="View location_search API" />
-			<exampleLinks>
-				<link url="#" name="Desination Menu Example" />
-		        <link url="#" name="Top Hotels Example" />
-		        <link url="#" name="Item Of Interest Example" />
-			</exampleLinks>
-		</feed>
+		<feed code="destination_menu" name="Destination Menu" exampleLink="true">
+            <overview>
+                <![CDATA[
+                    <p>Calls the Destination Menu feed by using the itemOfInterestId in the request.</p>
+                ]]>
+            </overview>
+        </feed>
 	</feeds>
 </slider>

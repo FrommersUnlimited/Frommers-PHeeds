@@ -48,7 +48,7 @@ if (!$countryLocations) {
 				
 				<div id="content">
 					<div class="primaryContent">
-						<img src="images/elephant.jpg" alt="Imagery" title="Imagery" />	
+						<img src="images/elephant.jpg" alt="Imagery" title="Imagery" class="primaryContentImage"/>	
 						
 						<h1>Welcome to the Your Brand Destination Guide</h1>
 						

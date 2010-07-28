@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<slideQuickLinks>
+    <link url="index.php" name="Home Page" />
+    <link url="guide_detail.php?guideStructureId=252780" name="Guide Detail" />
+    <link url="item_of_interest_detail.php?itemOfInterestId=453875"
+        name="Item Of Interest" />
+    <link url="location_detail.php?locationId=150668"
+        name="Destination" />
+    <link url="item_of_interest_list.php?type=EVENT&amp;locationId=149605"
+        name="Event List Page" />
+    <link url="item_of_interest_list.php?type=ATTRACTION&amp;locationId=150668"
+        name="Attraction List" />
+    <link url="item_of_interest_list.php?type=HOTEL&amp;locationId=150668"
+        name="Hotel List" />
+    <link url="item_of_interest_list.php?type=RESTAURANT&amp;locationId=150668"
+        name="Restaurant List" />
+    <link url="item_of_interest_list.php?type=NIGHTLIFE&amp;locationId=150668"
+        name="Nightlife List" />
+    <link url="item_of_interest_list.php?type=SHOP&amp;locationId=150668"
+        name="Shop List" />            
+        
+</slideQuickLinks>
