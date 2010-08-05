@@ -3,6 +3,18 @@
 
 	<property file="local.properties" />
 	<property file="default.properties" />
+	
+	<target name="local" description="Copy site to local web server">
+		<mkdir dir="${local.webroot.dir}/${local.site.dir}"/>
+        <copy todir="${local.webroot.dir}/${local.site.dir}">
+            <fileset dir="web">
+                <and>
+                    <different targetdir="${local.webroot.dir}/${local.site.dir}"/>
+                    <type type="file"/>
+                </and>
+            </fileset>
+        </copy>	
+	</target>
 
 	<target name="pack-site" description="Pack the site into a deployable zip file">
 		<mkdir dir="dist/archives" />
