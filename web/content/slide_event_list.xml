@@ -20,6 +20,20 @@
 	       			<p>Calls the Destination Menu feed using the locationId in the request.</p>
 		        ]]>
 			</overview>
+		</feed>		
+		<feed code="audience_interest_search" name="Audience interest Search" exampleLink="true">
+			<overview>
+				<![CDATA[
+	       			<p>Calls the Audience interest Search feed using the audienceInterestId</p>
+		        ]]>
+			</overview>
+		</feed>		
+		<feed code="calendar_event_search" name="Clanedar Event Search" exampleLink="true">
+			<overview>
+				<![CDATA[
+	       			<p>Calls the Calendar event search, which counts the events per day</p>
+		        ]]>
+			</overview>
 		</feed>
 	</feeds>
 </slider>

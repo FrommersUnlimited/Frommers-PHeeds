@@ -10,7 +10,7 @@ $destinationMenuParameters["autoHide"] = "true";
 $destinationMenu = callFeed("destination_menu.feed", $destinationMenuParameters);
 
 if (!$destinationMenu) {
-	include "error.php"; 
+	include "error.php";
 	exit();
 }
 
@@ -19,7 +19,7 @@ $locationParameters["locationId"] = $locationId;
 $location = callFeed("location.feed", $locationParameters);
 
 if (!$location) {
-	include "error.php"; 
+	include "error.php";
 	exit();
 }
 
@@ -34,18 +34,19 @@ $type = $q["type"];
 if (!isset($q["locationId"])) {
 	$q["locationId"] = $_REQUEST["locationId"];
 }
+
 if (!isset($q["page"])) {
 	$q["page"] = 1;
 }
 
 if (!isset($q["sort"])) {
-	
+
 	if ($type == "EVENT") {
 		$q["sort"] = "rank";
 	} else {
 		$q["sort"] = "";
 		$q["sortDirection"] = "asc";
-	} 
+	}
 }
 
 if (!isset($q["sortDirection"])) {
@@ -60,10 +61,24 @@ if ($type == "EVENT") {
 	$tagName = "eventResult";
 } else {
 	$tagName = "poiResult";
-} 
-		
+}
+
 $parameters = array();
 $parameters["locationId"] = $q["locationId"];
+
+// category and date parameters
+if (isset($q['audienceInterestId']))
+	$parameters["audienceInterestId"] = $q["audienceInterestId"];
+
+if (isset($q['startDate']))
+	$parameters["startDate"] = $q["startDate"];
+
+if (isset($q['endDate']))
+	$parameters["endDate"] = $q["endDate"];
+
+if (isset($q['daysAhead']))
+	$parameters["daysAhead"]= $q["daysAhead"];
+
 if ($q["sort"] != "") {
 	$parameters["sort"] = $q["sort"];
 }
@@ -73,6 +88,41 @@ $parameters["nPerPage"] = $q["nPerPage"];
 if ($type != "EVENT") {
 	$parameters["type"] = $q["type"];
 	$parameters["showMax"] = "true";
+}else {
+    // parameter for the calendar and audienceInterestSearch feeds
+	$audienceInterestParameters = array();
+	$calendarParameters = array();
+
+	// copy the search parameters for the calendar and audienceinterestSearch feeds
+	foreach($_GET as $key=>$val){
+  		if ($val != "EVENT"){
+  	 	$audienceInterestParameters[$key]=$val;
+  	 	$calendarParameters[$key]=$val;
+  		}
+	}
+
+	// default category is the Events root category Events audienceInterest id=530006
+	if (!isset($q['audienceInterestId'])) {
+		$audienceInterestParameters["audienceInterestId"] = 530006;
+	}
+
+	$audienceInterestParameters["showChildren"] = "true";
+	$audienceInterestParameters["showCount"] = "true";
+
+	// if days ahead not specified we displays a clanedar of 10 days
+	if (!isset($q['endDate']) && !isset($q['daysAhead'])){
+		$calendarParameters["daysAhead"] = 10;
+	}
+
+	$audienceInterestResponse = callFeed("audience_interest_search.feed", $audienceInterestParameters);
+
+	if ($audienceInterestResponse)
+		$audienceInterestResults = $audienceInterestResponse->audienceInterestResult;
+
+	$calendarResponse = callFeed("calendar_event_search.feed", $calendarParameters);
+
+	if ($calendarResponse)
+		$calendarResults = $calendarResponse->calendarResult;
 }
 
 $baseURL = "item_of_interest_list.php";
@@ -86,7 +136,7 @@ if ($type == "EVENT") {
 $results = callFeed($feed, $parameters);
 
 if (!$results) {
-	include "error.php"; 
+	include "error.php";
 	exit();
 }
 
@@ -98,7 +148,7 @@ $end = $start + intval($results["currentPageResultCount"]) - 1;
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<script src="js/jquery-1.4.2.min.js" type="text/javascript"></script>
 		<script src="js/jquery.ajaxify.js" type="text/javascript"></script>
 		<script src="js/jquery.cookie.js" type="text/javascript"></script>
@@ -113,25 +163,25 @@ $end = $start + intval($results["currentPageResultCount"]) - 1;
 	<body>
 		<div id="page">
 			<?php if ($type == "EVENT") { ?>
-				<?php $slideContentFile =  "content/slide_event_list.xml"; ?>	
+				<?php $slideContentFile =  "content/slide_event_list.xml"; ?>
 			<?php } else { ?>
 				<?php $slideContentFile =  "content/slide_poi_list.xml"; ?>
 			<?php } ?>
-			
+
 			<?php include('includes/slider.php'); ?>
-			
+
 			<div id="innerPage">
-			
+
 				<div id="header">
 					<a href="index.php">Your Brand | Home</a>
 				</div>
-				
+
 				<div id="content">
-		
+
 					<?php include 'includes/navigation.php';?>
-					
+
 					<div class="primaryContent">
-						
+
 						<div id="breadcrumb">
 							<!--  You are currently visiting -->
 							<ul>
@@ -153,12 +203,12 @@ $end = $start + intval($results["currentPageResultCount"]) - 1;
 						<?php } if ($type == "ATTRACTION") { ?>
 							<h2><span>Attractions</span></h2>
 						<?php }?>
-						
+
 						<div id="results">
-							<?php 
+							<?php
 							$items = $results->xpath("//" . $tagName);
 							$typeName = $items[0]["typeName"];
-							$extendedInfoType = $items[0]["extended-info-type"]; 
+							$extendedInfoType = $items[0]["extended-info-type"];
 							?>
 							<div class="feedContent">
 								<?php if ($type == "EVENT") { ?>
@@ -175,11 +225,11 @@ $end = $start + intval($results["currentPageResultCount"]) - 1;
 												<?php buildSortHeader("Date", "date", $results["sort"], $results["sortDirection"]); ?>
 												<?php buildSortHeader("Rank", "rank", $results["sort"], $results["sortDirection"]); ?>
 											<?php } else { ?>
-												<?php buildSortHeader("Rank", "rank", $results["sort"], $results["sortDirection"]); ?>	
+												<?php buildSortHeader("Rank", "rank", $results["sort"], $results["sortDirection"]); ?>
 												<?php if ($type == "RESTAURANT" || $type == "HOTEL") { ?>
 													<?php buildSortHeader("Price", "priceCategory", $results["sort"], $results["sortDirection"]); ?>
 												<?php } ?>
-												<?php buildSortHeader($typeName, "name", $results["sort"], $results["sortDirection"]); ?>		
+												<?php buildSortHeader($typeName, "name", $results["sort"], $results["sortDirection"]); ?>
 												<?php if ($type == "RESTAURANT" || $type == "HOTEL" ) { ?>
 													<?php buildSortHeader("Neighborhood", "neighborhood", $results["sort"], $results["sortDirection"]); ?>
 												<?php } ?>
@@ -193,13 +243,13 @@ $end = $start + intval($results["currentPageResultCount"]) - 1;
 														<th>Attraction Type</th>
 													<?php } ?>
 												<?php } ?>
-											<?php } ?>	
+											<?php } ?>
 										</tr>
-										
+
 										<?php foreach ($items as $result) {?>
 											<tr>
 												<?php if ($type == "EVENT") { ?>
-							
+
 													<td valign="top" style="padding: 7px 0px 0px 5px;">
 														<?php if($result->image) { ?>
 															<a href="item_of_interest_detail.php?itemOfInterestId=<?php echo $result["id"]; ?>"><img src="<?php echo BASE_MEDIA_URL; ?><?php echo $result->image["mediaUrl"]; ?>" /></a>
@@ -230,14 +280,14 @@ $end = $start + intval($results["currentPageResultCount"]) - 1;
 														<td><?php echo $result["subTypeName"];?></td>
 													<?php } ?>
 												<?php } ?>
-												
+
 											</tr>
 										<?php } ?>
 									</table>
-								</div>		
-							
-						
-								<?php if (intval($results["totalPageCount"]) > 1) { ?>		
+								</div>
+
+
+								<?php if (intval($results["totalPageCount"]) > 1) { ?>
 								<div class="pagination">
 									<strong>Showing <?php echo $start; ?> to <?php echo $end; ?> of <?php echo $results["totalResultCount"]; ?></strong>
 									<!--  <strong>Page <?php echo $results["currentPage"];?> of <?php echo $results["totalPageCount"];?></strong> -->
@@ -258,16 +308,16 @@ $end = $start + intval($results["currentPageResultCount"]) - 1;
 								</div>
 								<?php } ?>
 							</div>
-						</div>						
+						</div>
 					</div>
-				</div>			
+				</div>
 			</div>
 		</div>
 	</body>
 </html>
 
 
-<?php 
+<?php
 function buildURL($q, $u) {
 	global $baseURL;
 	$url = $baseURL . "?";
@@ -292,5 +342,5 @@ function buildURL($q, $u) {
 		<?php } else {?>
 			<th class="sorted desc <?php if ($class != "") { echo $class; }?>"><a href="<?php echo buildURL($q, array("page" => "1", "sort" => $code, "sortDirection" => "asc")); ?>"><?php echo $name; ?></a></th>
 		<?php } ?>
-	<?php } 
+	<?php }
 }?>
