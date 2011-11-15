@@ -125,11 +125,10 @@ function getGuideStructureIdFromUrl($url) {
 }
 
 function createLocationListItems($xml) {
-	$parents = $xml->xpath('..//parent');
-	if ($parents) {
-		for ($i = count($parents) - 2; $i > -1; $i--) {
-			?><li><a href="location_detail.php?locationId=<?php echo $parents[$i]["id"]; ?>"><?php echo $parents[$i]["name"]; ?></a></li><?php
-		}
+	if ($xml) {
+		$parent = $xml->parent;
+		createLocationListItems($parent);
+		?><li><a href="location_detail.php?locationId=<?php echo $xml["id"]; ?>"><?php echo $xml["name"]; ?></a></li><?php
 	}
 }
 
