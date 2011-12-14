@@ -2,6 +2,9 @@
 define("BASE_MEDIA_URL", "http://media.wiley.com");
 include('cache.inc.php');
 
+/**
+ * Use curl to call an external Frommers Unlimited feed and return the XML respones
+ */
 function callFeed($feedName, $parameters, $ttl = 15) {
 	$debug = false;
 	$baseURL = "http://demosite.frommers.biz/frommers/" . $feedName;
@@ -83,8 +86,6 @@ function callFeed($feedName, $parameters, $ttl = 15) {
 	}
 	return $xml;
 }
-
-
 
 function createMenuLink($feedCode, $feedQuery) {
 
